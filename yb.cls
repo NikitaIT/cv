@@ -58,4 +58,24 @@
     \includegraphics[width=\textwidth]{./face.png}
   }\end{textblock}
 }
+
+
+\usepackage{pgfornament}
+\newcommand{\ornamentleft}{%
+    \pgfornament[width=3em]{94}%
+}
+
+\newcommand{\ornamentheader}[1]{%
+\begin{samepage}
+    \begin{center}
+    \ornamentleft
+    \end{center}
+    \begin{center}
+    \quad{\large\emph{#1}}\quad % style as desired
+    \end{center}%
+    
+\end{samepage}
+}
+
+
 \endinput
