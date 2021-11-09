@@ -5,6 +5,11 @@ const anyLang = (x) =>
   x.name.flatMap(() => values(x.stack).flatMap((x) => x?.langs ?? []));
 const langsFromStack = (stack) => (x) =>
   x.name.flatMap(() => x.stack[stack]?.langs ?? []);
+const anyLibOrTool = (x) =>
+  x.name.flatMap(() => values(x.stack).flatMap(libOrTool));
+const libOrTool = (x) => [...(x?.libs ?? []), ...(x?.tools ?? [])];
+const libOrToolFromStack = (stack) => (x) =>
+  x.name.flatMap(() => libOrTool(x.stack[stack]));
 const uniqueSortByCount = (x) =>
   entries(
     groupBy(
@@ -18,6 +23,41 @@ const uniqueSortByCount = (x) =>
 function main(params) {
   const { projects } = data();
   const names = projects.map((x) => x.name);
+  const allLibOrTool = uniqueSortByCount(projects.flatMap(anyLibOrTool));
+  const customLibOrTool = [
+    "Vue",
+    "Angular 4+",
+    "AgGrid",
+    "Lerna",
+    "Storybook",
+    "Tree.js",
+    "Spring",
+    "ASP.NET",
+    "Tailwindcss",
+  ];
+  const libOrToolByProject = entries(
+    groupBy(
+      projects,
+      (x) => keys(x.stack),
+      (projectsInStack, stack) => {
+        const projectCountForStackByLang = groupBy(
+          projectsInStack,
+          libOrToolFromStack(stack),
+          length
+        );
+        return {
+          length: length(projectsInStack.flatMap((x) => x.name)),
+          data: customLibOrTool.map(
+            (lang) => projectCountForStackByLang[lang] ?? 0
+          ),
+        };
+      }
+    )
+  ).map(([k, v]) => ({
+    name: k,
+    data: v.data,
+    y: v.length,
+  }));
   const allLangs = uniqueSortByCount(projects.flatMap(anyLang));
   const langsByProject = entries(
     groupBy(
@@ -60,6 +100,7 @@ function main(params) {
     // .map(values)
     // .map((x) => x.join())
     .map((x) => log(x));
+  debugger;
 }
 
 const groupBy = (x, f, fval) =>
