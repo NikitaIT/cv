@@ -15,7 +15,7 @@
 \vspace*{12pt}
 
 Software developer and architect with
-5+ years of engineering in complex projects and distributed software
+8+ years of engineering in complex projects and distributed software
 development teams. Strong background in object-oriented analysis and design
 with Typescript and C\#. I participate in \href{https://github.com/nikitait}{open source projects} with which I work. Code mentor. Software
 \href{https://nikitait.github.io}{blogger}. Regular attendee of developer meetups and \href{https://www.youtube.com/watch?v=gVKDU043EWI&t=1s&ab_channel=EPAMSaint-Petersburg}{hackathons} since 2016. Participated in \href{
@@ -96,6 +96,21 @@ Custom CRM/BPMS/CMS (back-office):
 It seems to me superfluous to list this every time something that did not have a key value: Git, SVN, Bootstrap, SemanticUI, ElementUI, AntUI, TypeORM, Webpack, Babel, eslint, tslint, prettier, mocha, jest, jira, youtrack, trello, gitlab, confluence, python, Maven, MD, PDF, HTML 5, CSS3, tsc, ttsc, HTTP, HTTPS, TCP, WS, WSS, FTP, UI, UX, ARIA, Accessibility, less, scss, BEM, PostCSS, styled-components, redux, mobx, vuex, Rx.
 
 \begin{samepage}
+
+\subsection*{As an architect, I have been responsible for}
+
+Generation and analysis of \href{https://www.openapis.org/}{OpenApi} REST interfaces for transparency of service communication.
+\newline - Idempotency of all requests with request inbox pattern. As a result: POST always 200 and lock edit if 500 like in \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html#client-tokens}{AWS client token} and \href{https://stripe.com/docs/api/idempotent_requests}{Stripe Idempotency-Key}. Versioned or fingerprinted GET like in \href{https://cloud.google.com/compute/docs/reference/rest/v1/instances/setTags}{Google Cloud}. Soft DELETE with 200 in short time window.
+\newline - Hiding sensitive data with hash-based exchange;
+\newline - Integration events idempotency from "at least once delivery" to "at most once delivery" with transaction outbox pattern.
+
+
+\end{samepage}
+
+\begin{samepage}
+
+\subsection*{Some Recent Projects}
+
 \subsection*{Code mentoring and consulting}
 
 2021 - I was a code mentor to Senior Frontend Developer in one of the largest \href{https://pinkman.ru/}{design studios} in Russia. I helped him get an offer for a leading position in just a few days of pair programming.
