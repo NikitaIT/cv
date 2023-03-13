@@ -99,13 +99,39 @@ It seems to me superfluous to list this every time something that did not have a
 
 \subsection*{As an architect, I have been responsible for}
 
-Generation and analysis of \href{https://www.openapis.org/}{OpenApi} REST interfaces for transparency of service communication.
-\newline - Idempotency of all requests with request inbox pattern. As a result: POST always 200 and lock edit if 500 like in \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html#client-tokens}{AWS client token} and \href{https://stripe.com/docs/api/idempotent_requests}{Stripe Idempotency-Key}. Versioned or fingerprinted GET like in \href{https://cloud.google.com/compute/docs/reference/rest/v1/instances/setTags}{Google Cloud}. Soft DELETE with 200 in short time window.
-\newline - Hiding sensitive data with hash-based exchange;
+Generation and analysis of \href{https://www.openapis.org/}{OpenApi} REST interfaces and MQ for transparency of service communication.
+\newline - Idempotency of all requests with request inbox pattern. As a result: POST always 200 and edit lock if 500 like in \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html#client-tokens}{AWS client token} and \href{https://stripe.com/docs/api/idempotent_requests}{Stripe Idempotency-Key}. Versioned or fingerprinted GET like in \href{https://cloud.google.com/compute/docs/reference/rest/v1/instances/setTags}{Google Cloud}. \href{https://stackoverflow.com/questions/2549839/are-soft-deletes-a-good-idea}{Soft DELETE} with 200 in short time window.
 \newline - Integration events idempotency from "at least once delivery" to "at most once delivery" with transaction outbox pattern.
 
+Security audit.
+
+ - to prevent forgery of entries in the database with \href{https://ethereum.stackexchange.com/questions/27432/what-is-nonce-in-ethereum-how-does-it-prevent-double-spending}{nonce}.
+\newline - to prevent forgery of entries from external services with \href{https://cloud.google.com/kms/docs/digital-signatures}{digital signatures} with \href{https://aws.amazon.com/ru/blogs/security/digital-signing-asymmetric-keys-aws-kms/}{AWS KMS} and \href{https://www.vaultproject.io/}{Vault}.
+\newline - Hiding sensitive data with \href{https://www.pragmaticcoders.com/blog/anonymous-transactions-on-the-public-blockchain}{hash-based} exchange and etc.
+
+I have been responsible at least twice for:
+
+ - Making architectural decisions at project initiation (how to split domains, how to add strict borders) 
+\newline - Providing \href{https://plantuml.com/ru/}{plant-uml} architecture diagrams for the resulting solution. I use \href{https://www.eventstorming.com/}{event storming} in my practice for \href{https://pubs.opengroup.org/architecture/o-aa-standard/_open_agile_architecture.html}{incremental architecture}. All my decisions are based on solutions already used in the company, so I shouldn't care a lot about the cost of infrastructure.
+
+At the front-end architect, I was responsible for:
+
+ - compliance with the boundaries of reuse of packages between domains
+\newline - reducing the number of open connections to the backend
+\newline - first page load time
+\newline - offline support
+\newline - accessibility and semantic core
+\newline - legacy browsers support
+\newline - css methodology and its performance characteristics
 
 \end{samepage}
+
+\subsection*{As a Scrum Master, I have been responsible for}
+
+ - stand-ups always plan tasks for the day
+\newline - retrospectives always end with the creation of tasks in the backlog
+\newline - planning always ends with evaluations, where 1 task equals 1 story point equals one acceptance test
+\newline - demo is always prepared between code review and task completion.
 
 \begin{samepage}
 
